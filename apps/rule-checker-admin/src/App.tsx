@@ -5,6 +5,14 @@ import { theme } from "./theme/theme";
 import Login from "./Login";
 import "./App.scss";
 import Dashboard from "./pages/Dashboard";
+import { RuleList } from "./rule/RuleList";
+import { RuleCreate } from "./rule/RuleCreate";
+import { RuleEdit } from "./rule/RuleEdit";
+import { RuleShow } from "./rule/RuleShow";
+import { RuleItemList } from "./ruleItem/RuleItemList";
+import { RuleItemCreate } from "./ruleItem/RuleItemCreate";
+import { RuleItemEdit } from "./ruleItem/RuleItemEdit";
+import { RuleItemShow } from "./ruleItem/RuleItemShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -30,7 +38,22 @@ const App = (): React.ReactElement => {
         theme={theme}
         dashboard={Dashboard}
         loginPage={Login}
-      ></Admin>
+      >
+        <Resource
+          name="Rule"
+          list={RuleList}
+          edit={RuleEdit}
+          create={RuleCreate}
+          show={RuleShow}
+        />
+        <Resource
+          name="RuleItem"
+          list={RuleItemList}
+          edit={RuleItemEdit}
+          create={RuleItemCreate}
+          show={RuleItemShow}
+        />
+      </Admin>
     </div>
   );
 };

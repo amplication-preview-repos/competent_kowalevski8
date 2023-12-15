@@ -6,3 +6,20 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Rule {
+  createdAt       DateTime  @default(now())
+  id              String    @id @default(cuid())
+  ruleDescription String
+  rulesRuleItems  RuleItem?
+  updatedAt       DateTime  @updatedAt
+}
+
+model RuleItem {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  ruleId    Rule?    @relation(fields: [id], references: [id])
+  id        String?  @unique
+  ruleText  String
+  updatedAt DateTime @updatedAt
+}
